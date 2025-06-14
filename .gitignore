@@ -2,6 +2,3 @@
 **/.terragrunt-cache/
 **/.terraform/
 **/.terraform.lock.hcl
-
-# Ignore all .hcl files (used by Terraform/Terragrunt)
-**/*.hcl
