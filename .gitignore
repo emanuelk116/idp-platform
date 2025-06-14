@@ -1,0 +1,7 @@
+# Ignore Terraform and Terragrunt directories and files
+**/.terragrunt-cache/
+**/.terraform/
+**/.terraform.lock.hcl
+
+# Ignore all .hcl files (used by Terraform/Terragrunt)
+**/*.hcl

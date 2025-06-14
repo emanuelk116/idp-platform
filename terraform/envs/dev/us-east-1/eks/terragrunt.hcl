@@ -1,5 +1,9 @@
 terraform {
-  source = "../../../modules/eks"
+  source = "../../../../modules/eks"
+}
+
+include {
+  path = find_in_parent_folders("root.hcl")
 }
 
 dependencies {

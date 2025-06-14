@@ -1,5 +1,9 @@
 terraform {
-  source = "../../../modules/iam"
+  source = "../../../../modules/iam"
+}
+
+include {
+  path = find_in_parent_folders("root.hcl")
 }
 
 inputs = {

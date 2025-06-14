@@ -1,5 +1,9 @@
 terraform {
-  source = "../../../modules/vpc"
+  source = "../../../../modules/vpc"
+}
+
+include {
+  path = find_in_parent_folders("root.hcl")
 }
 
 inputs = {
