@@ -1,0 +1,6 @@
+apiVersion: v2
+name: my-demo-app
+description: A demo app deployed via ArgoCD and Helm
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
