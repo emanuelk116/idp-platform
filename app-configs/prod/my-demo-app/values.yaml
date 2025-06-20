@@ -1,0 +1,24 @@
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: "1.25.2"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: my-demo-app.example.com
+  path: /
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

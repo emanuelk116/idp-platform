@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dev-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/emanuelk116/idp-platform.git
+        revision: HEAD
+        directories:
+          - path: app-configs/dev/*  # Scans dev/<app>/values.yaml
+  template:
+    metadata:
+      name: '{{path.basename}}-dev'
+    spec:
+      project: dev
+      source:
+        repoURL: https://github.com/emanuelk116/idp-platform.git
+        targetRevision: HEAD
+        path: helm-charts/{{path.basename}}
+        helm:
+          valueFiles:
+            - ../../app-configs/dev/{{path.basename}}/values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: {{path.basename}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
