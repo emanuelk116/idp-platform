@@ -2,6 +2,10 @@ terraform {
   backend "s3" {}
 }
 
+provider "aws" {
+  region = var.region
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -23,8 +27,9 @@ module "eks" {
       name          = "default-node-group"
       instance_types = ["t3.medium"]
       min_size       = 1
-      max_size       = 3
-      desired_size   = 2
+      max_size       = 2
+      desired_size   = 1
+      capacity_type   = "SPOT"
       iam_role_arn   = var.node_role_arn
     }
   }
