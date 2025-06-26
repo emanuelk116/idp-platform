@@ -29,7 +29,6 @@ module "eks" {
       min_size       = 1
       max_size       = 2
       desired_size   = 1
-      # capacity_type   = "SPOT"
       iam_role_arn   = var.node_role_arn
     }
   }
