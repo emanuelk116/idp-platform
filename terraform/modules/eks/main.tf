@@ -6,6 +6,10 @@ provider "aws" {
   region = var.region
 }
 
+data "http" "my_ip" {
+  url = "https://checkip.amazonaws.com/"
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -32,6 +36,10 @@ module "eks" {
       iam_role_arn   = var.node_role_arn
     }
   }
+
+  cluster_endpoint_public_access           = true
+  cluster_endpoint_private_access          = true
+  cluster_endpoint_public_access_cidrs = ["${chomp(trimspace(data.http.my_ip.response_body))}/32"]
 
   tags = {
     Environment = var.env
