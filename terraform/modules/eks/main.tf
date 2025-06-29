@@ -10,9 +10,13 @@ data "http" "my_ip" {
   url = "https://checkip.amazonaws.com/"
 }
 
+data "aws_iam_user" "terraform_user" {
+  user_name = "terraform-user"
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+  version = "~> 20.8"
 
   cluster_name    = var.cluster_name
   cluster_version = var.cluster_version
@@ -45,4 +49,15 @@ module "eks" {
     Environment = var.env
     Terraform   = "true"
   }
+
+  # manage_aws_auth_configmap = true
+
+  # aws_auth_users = [
+  #   {
+  #     userarn  = data.aws_iam_user.terraform_user.arn
+  #     username = "terraform-user"
+  #     groups   = ["system:masters"]
+  #   }
+  # ]
+
 }
