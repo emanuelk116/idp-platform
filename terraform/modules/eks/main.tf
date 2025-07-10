@@ -50,14 +50,4 @@ module "eks" {
     Terraform   = "true"
   }
 
-  # manage_aws_auth_configmap = true
-
-  # aws_auth_users = [
-  #   {
-  #     userarn  = data.aws_iam_user.terraform_user.arn
-  #     username = "terraform-user"
-  #     groups   = ["system:masters"]
-  #   }
-  # ]
-
 }
