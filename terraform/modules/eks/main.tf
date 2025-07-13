@@ -33,7 +33,7 @@ module "eks" {
   eks_managed_node_groups = {
     default = {
       name          = "default-node-group"
-      instance_types = ["t2.medium"]
+      instance_types = ["t3.medium"]
       min_size       = 1
       max_size       = 2
       desired_size   = 1
