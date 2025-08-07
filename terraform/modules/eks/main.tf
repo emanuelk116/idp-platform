@@ -42,7 +42,6 @@ module "eks" {
   }
 
   cluster_endpoint_public_access           = true
-  cluster_endpoint_private_access          = true
   cluster_endpoint_public_access_cidrs = ["${chomp(trimspace(data.http.my_ip.response_body))}/32"]
 
   tags = {
