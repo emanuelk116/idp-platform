@@ -9,16 +9,11 @@ include {
 dependencies {
   paths = [
     "../networking",
-    "../iam"
   ]
 }
 
 dependency "networking" {
   config_path = "../networking"
-}
-
-dependency "iam" {
-  config_path = "../iam"
 }
 
 inputs = {
@@ -27,7 +22,5 @@ inputs = {
   cluster_name        = "idp-dev"
   cluster_version     = "1.33"
   vpc_id              = dependency.networking.outputs.vpc_id
-  public_subnet_ids   = dependency.networking.outputs.public_subnet_ids
-  cluster_role_arn    = dependency.iam.outputs.eks_cluster_role_arn
-  node_role_arn       = dependency.iam.outputs.eks_node_role_arn
+  private_subnet_ids   = dependency.networking.outputs.private_subnet_ids
 }
