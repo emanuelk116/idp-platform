@@ -13,9 +13,14 @@ variable "vpc_cidr" {
   description = "VPC CIDR block"
 }
 
-variable "public_subnet_cidrs" {
+# variable "public_subnet_cidrs" {
+#   type        = list(string)
+#   description = "List of public subnet CIDRs"
+# }
+
+variable "private_subnet_cidrs" {
   type        = list(string)
-  description = "List of public subnet CIDRs"
+  description = "List of private subnet CIDRs"
 }
 
 variable "azs" {
