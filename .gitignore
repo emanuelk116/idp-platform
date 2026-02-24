@@ -2,3 +2,4 @@
 **/.terragrunt-cache/
 **/.terraform/
 **/.terraform.lock.hcl
+password.env
